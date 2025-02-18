@@ -1,0 +1,42 @@
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8); /* Soft overlay for better contrast */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999; /* Ensure it appears above other content */
+  }
+  
+  .loader {
+    width: 50px;
+    --b: 8px; 
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 1px;
+    background: conic-gradient(#0000 10%, #f03355) content-box;
+    
+    /* Masking to create the dotted effect */
+    -webkit-mask:
+      repeating-conic-gradient(#0000 0deg, #000 1deg 20deg, #0000 21deg 36deg),
+      radial-gradient(farthest-side, #0000 calc(100% - var(--b) - 1px), #000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+    mask-composite: intersect;
+  
+    /* Add animation to rotate the loader */
+    animation: l4 1s infinite steps(10);
+  
+    /* Optional: Add subtle shadow to enhance the loader's look */
+    box-shadow: 0 0 15px rgba(240, 53, 85, 0.5); /* Soft glow effect in loader color */
+  }
+  
+  @keyframes l4 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  
